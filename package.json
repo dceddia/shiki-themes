@@ -1,0 +1,21 @@
+{
+  "name": "shiki-themes",
+  "version": "0.1.7",
+  "description": "Themes for shiki",
+  "keywords": [
+    "shiki",
+    "theme"
+  ],
+  "author": "Pine Wu <octref@gmail.com>",
+  "homepage": "https://github.com/octref/shiki/tree/master/packages/themes",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dceddia/shiki-themes.git"
+  },
+  "dependencies": {
+    "json5": "^2.1.0",
+    "vscode-textmate": "^5.2.0"
+  }
+}
