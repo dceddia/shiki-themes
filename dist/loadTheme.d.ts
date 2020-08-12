@@ -17,6 +17,10 @@ export interface IShikiTheme extends IRawTheme {
      */
     bg: string;
     /**
+     * @description text foreground color
+     */
+    fg: string;
+    /**
      * @description relative path of included theme
      */
     include?: string;

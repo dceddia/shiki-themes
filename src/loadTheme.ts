@@ -19,7 +19,8 @@ function loadPListTheme(themePath: string): IRawTheme {
 function toShikiTheme(rawTheme: IRawTheme): IShikiTheme {
   const shikiTheme: IShikiTheme = {
     ...rawTheme,
-    bg: getThemeBg(rawTheme)
+    bg: getThemeBg(rawTheme),
+    fg: getThemeFg(rawTheme)
   }
 
   if ((<any>rawTheme).include) {
@@ -57,6 +58,10 @@ export function loadTheme(themePath: string): IShikiTheme {
     if (includedTheme.bg && !shikiTheme.bg) {
       shikiTheme.bg = includedTheme.bg
     }
+
+    if (includedTheme.fg && !shikiTheme.fg) {
+      shikiTheme.fg = includedTheme.fg
+    }
   }
 
   return shikiTheme
@@ -79,6 +84,11 @@ export interface IShikiTheme extends IRawTheme {
   bg: string
 
   /**
+   * @description text foreground color
+   */
+  fg: string
+
+  /**
    * @description relative path of included theme
    */
   include?: string
@@ -95,4 +105,17 @@ function getThemeBg(theme: IRawTheme): string {
   })
 
   return globalSetting ? globalSetting.settings.background : null
+}
+
+function getThemeFg(theme: IRawTheme): string {
+  if ((<any>theme).colors && (<any>theme).colors['editor.foreground']) {
+    return (<any>theme).colors['editor.foreground']
+  }
+  let settings = theme.settings ? theme.settings : (<any>theme).tokenColors
+
+  const globalSetting = settings.find(s => {
+    return !s.name && !s.scope
+  })
+
+  return globalSetting ? globalSetting.settings.foreground : null
 }

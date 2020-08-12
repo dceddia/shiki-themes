@@ -25,7 +25,7 @@ function loadPListTheme(themePath) {
     return plist_1.parse(fileContents);
 }
 function toShikiTheme(rawTheme) {
-    var shikiTheme = __assign(__assign({}, rawTheme), { bg: getThemeBg(rawTheme) });
+    var shikiTheme = __assign(__assign({}, rawTheme), { bg: getThemeBg(rawTheme), fg: getThemeFg(rawTheme) });
     if (rawTheme.include) {
         shikiTheme.include = rawTheme.include;
     }
@@ -55,6 +55,9 @@ function loadTheme(themePath) {
         if (includedTheme.bg && !shikiTheme.bg) {
             shikiTheme.bg = includedTheme.bg;
         }
+        if (includedTheme.fg && !shikiTheme.fg) {
+            shikiTheme.fg = includedTheme.fg;
+        }
     }
     return shikiTheme;
 }
@@ -68,4 +71,14 @@ function getThemeBg(theme) {
         return !s.name && !s.scope;
     });
     return globalSetting ? globalSetting.settings.background : null;
+}
+function getThemeFg(theme) {
+    if (theme.colors && theme.colors['editor.foreground']) {
+        return theme.colors['editor.foreground'];
+    }
+    var settings = theme.settings ? theme.settings : theme.tokenColors;
+    var globalSetting = settings.find(function (s) {
+        return !s.name && !s.scope;
+    });
+    return globalSetting ? globalSetting.settings.foreground : null;
 }

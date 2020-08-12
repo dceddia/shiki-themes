@@ -152,8 +152,8 @@
         "affectsGlobalScope": false
       },
       "./src/loadtheme.ts": {
-        "version": "2177b2f6ca6da9d56582cf213d33410eed0047d674432a219cfb272551f0c902",
-        "signature": "08f140e194979617cca4da94ef81cdc6f675641b0fa0bfc60c1d35ef1dbf2638",
+        "version": "b04268fdc88195d0667bce5ec2482c008362e77881ab7f02edd7f0443e3a64ac",
+        "signature": "344144bf66ce9c884aba7ab535ad9c21368f3b2669f7b50b4ae421e8c519a536",
         "affectsGlobalScope": false
       },
       "./src/types.ts": {
@@ -583,6 +583,7 @@
       "composite": true,
       "rootDir": "./src",
       "outDir": "./dist",
+      "watch": true,
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {
